@@ -301,7 +301,7 @@ END IF;
 SELECT basket_id into basket_id_from_pkup from exit_request_detailes WHERE id = id_exit_request_detailes_IN;
 SELECT exit_request_id into exit_request_id_orders from order_details WHERE id = order_detail_id_IN;  
 SELECT COUNT(*) into count_basket_is_not_sorted FROM exit_request_detailes WHERE exit_request_id = exit_request_id_orders and basket_id = basket_id_from_pkup and is_sorted = 0;
-IF count_basket_is_not_sorted THEN
+IF count_basket_is_not_sorted = 0 THEN
 UPDATE baskets SET exit_request_id = 0 WHERE id = basket_id_from_pkup;
 END if;
 END
