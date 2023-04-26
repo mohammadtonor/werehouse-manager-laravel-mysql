@@ -256,7 +256,7 @@ DECLARE order_id_for_basket int;
 
 SELECT exit_request_id INTO exit_request_id_by_basket_id from baskets WHERE id = basket_id_in;
 
-SELECT od.order_id,od.id,tbl.id into order_detail_id_out,order_id_for_basket,id_exit_request_detailes_out from order_details od 
+SELECT od.order_id,od.id,tbl.id into order_id_for_basket, order_detail_id_out ,id_exit_request_detailes_out from order_details od 
 INNER JOIN ( SELECT exd.id ,exd.exit_request_id FROM exit_request_detailes exd
 WHERE exd.basket_id = basket_id_in  AND exd.product_id = product_id_in and exd.is_sorted = 0 limit 1
 ) as tbl on od.exit_request_id = tbl.exit_request_id 
